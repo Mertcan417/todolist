@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
   </head>
   <body>
     <div class="box">
@@ -56,6 +56,7 @@
         todoItemElement.setAttribute("class", "todo item");
 
         document.querySelector(".items").appendChild(todoItemElement);
+        document.querySelector(".items").style.transition = "all 2s";
 
         const deleteButton = document.createElement("button");
         deleteButton.setAttribute("class", "delete");
