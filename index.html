@@ -5,6 +5,8 @@
     <meta name="description" content="Our first page" />
     <meta name="keywords" content="html tutorial template" />
     <link rel="stylesheet" href="style.css" type="text/css" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
     <div class="box">
@@ -27,6 +29,10 @@
         </div>
       </div>
     </div>
+	<div class="gif container">
+
+		<img src="gifffie.gif" alt="gif" class="giff" />
+	</div>
   </body>
 
   <script type="text/javascript">
@@ -35,37 +41,36 @@
     document.querySelector("img").addEventListener("click", () => {
       const todoValue = document.querySelector("input").value;
 
-	  if(todoValue !== ""){
+      if (todoValue !== "") {
+        let todoItemElement = document.createElement("div");
+        let todoValueElement = document.createTextNode(todoValue);
 
-		  let todoItemElement = document.createElement("div");
-		  let todoValueElement = document.createTextNode(todoValue);
+        let todoDivTextElement = document.createElement("div");
+        todoDivTextElement.appendChild(todoValueElement);
 
-      let todoDivTextElement = document.createElement("div");
-      todoDivTextElement.appendChild(todoValueElement);
-	  
-      todoItemElement.appendChild(todoDivTextElement);
+        todoItemElement.appendChild(todoDivTextElement);
 
-      todoItemElement.setAttribute("class", "todo item");
+        todoItemElement.setAttribute("class", "todo item");
 
-      document.querySelector(".items").appendChild(todoItemElement);
-	  
-      const deleteButton = document.createElement("button");
-      deleteButton.setAttribute("class", "delete");
-      deleteButton.textContent = "X";
-	  
-      todoItemElement.appendChild(deleteButton);
+        document.querySelector(".items").appendChild(todoItemElement);
 
-      deleteButton.addEventListener("click", () => {
-		  todoItemElement.remove();
-        mySound.play();
-      });
-	}
-	  
+        const deleteButton = document.createElement("button");
+        deleteButton.setAttribute("class", "delete");
+        deleteButton.textContent = "X";
+
+        todoItemElement.appendChild(deleteButton);
+
+        deleteButton.addEventListener("click", () => {
+          todoItemElement.remove();
+          mySound.play();
+        });
+      }
+
       document.querySelector("input").value = "";
     });
-	
+
     var input = document.querySelector("input");
-	
+
     // Execute a function when the user releases a key on the keyboard
     input.addEventListener("keyup", function (event) {
       // Number 13 is the "Enter" key on the keyboard
