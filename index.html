@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Our Funky HTML Page</title>
+    <meta name="description" content="Our first page" />
+    <meta name="keywords" content="html tutorial template" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <div class="box">
+      <div class="todo list box">
+        <div class="todo list header">
+          <div class="logo"></div>
+          <h1>Todo List</h1>
+        </div>
+        <div class="todo list bar">
+          <div class="todo list search">
+            <input type="text" placeholder="Add your task" />
+          </div>
+          <div class="todo list button">
+            <img src="button.png" />
+          </div>
+        </div>
+        <div class="todos">
+          <h1>Todo Items</h1>
+          <div class="todo items"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    let mySound = new Audio("mixkit-discrete-door-bell-announcement-225.wav");
+
+    document.querySelector("img").addEventListener("click", () => {
+      const todoValue = document.querySelector("input").value;
+
+	  if(todoValue !== ""){
+
+		  let todoItemElement = document.createElement("div");
+		  let todoValueElement = document.createTextNode(todoValue);
+
+      let todoDivTextElement = document.createElement("div");
+      todoDivTextElement.appendChild(todoValueElement);
+	  
+      todoItemElement.appendChild(todoDivTextElement);
+
+      todoItemElement.setAttribute("class", "todo item");
+
+      document.querySelector(".items").appendChild(todoItemElement);
+	  
+      const deleteButton = document.createElement("button");
+      deleteButton.setAttribute("class", "delete");
+      deleteButton.textContent = "X";
+	  
+      todoItemElement.appendChild(deleteButton);
+
+      deleteButton.addEventListener("click", () => {
+		  todoItemElement.remove();
+        mySound.play();
+      });
+	}
+	  
+      document.querySelector("input").value = "";
+    });
+	
+    var input = document.querySelector("input");
+	
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function (event) {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.querySelector("img").click();
+      }
+    });
+  </script>
+</html>
